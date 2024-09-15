@@ -7,7 +7,7 @@ def guessTheNumberGameFunction():
 
 
 
-def guessTheNumberGameDriver(playerInput):
+def guessTheNumberGameDriver():
     myNumber = guessTheNumberGameFunction()
     print("Here!!",myNumber)
 
@@ -16,14 +16,22 @@ def guessTheNumberGameDriver(playerInput):
     win = "Congratulations. You guessed my number!"
     game_result = ""
     flag = True
+    counter = 0
     while flag:
+        if counter > 10:
+            print("You should be able to do better!")
+            break
 
-        #playerInput = int(input("Guess my number between 1 and 1000 with the fewest guess: "))
+        playerInput = int(input("Guess my number between 1 and 1000 with the fewest guess: "))
 
         game_result = f"{high if playerInput > myNumber else low if playerInput != myNumber else win} "
-        if game_result == win:
+        if myNumber == playerInput:
             print(game_result)
             flag = False
         else: print(game_result)
+        counter += 1
+
 
     return game_result
+
+guessTheNumberGameDriver()
