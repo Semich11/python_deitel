@@ -6,31 +6,24 @@ def randomNumberGenerator():
     secondNumber = randrange(1,11)
     return firstNumber, secondNumber
 
-
-# firstNumber, secondNumber = randomNumberGenerator()
-#
-# correctAnswer = firstNumber * secondNumber
-# print(correctAnswer)
-#
-# studentAnswer = int(input(f"How much is {firstNumber} times {secondNumber}? "))
-# print(studentAnswer)
-#
-# if studentAnswer == correctAnswer:
-#     print("Very good!")
-
 flag = True
+
+correctComments = ["Very good", "Nice work", "Keep up the good work!"]
+wrongComments = ["No. Please try again.", "Wrong. Try once more.", "No. Keep trying."]
 
 while flag:
     firstNumber, secondNumber = randomNumberGenerator()
     correctAnswer = firstNumber * secondNumber
     studentAnswer = int(input(f"How much is {firstNumber} times {secondNumber}? "))
     if studentAnswer == correctAnswer:
-        print("Very good!")
+        correctComment = randrange(3)
+        print(correctComments[correctComment])
         flag = False
     else:
         print("No. Please try again.")
         while studentAnswer != correctAnswer:
             studentAnswer = int(input(f"How much is {firstNumber} times {secondNumber}? "))
             if studentAnswer == correctAnswer:
-                print("Very good!")
                 flag = False
+                wrongComment = randrange(3)
+                print(wrongComments[wrongComment])
